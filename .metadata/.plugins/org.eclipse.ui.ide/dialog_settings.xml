@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="E:\百度云新1\2017java\30-SSM分布式案例-互联网商城-阶段项目-必看(共197集）\15 本项目工具软件 汇总源码包\参考资料\参考资料\01.参考资料\FastDFS\bin\fastdfs_client"/>
+			<item value="E:\百度云新1\2017java\30-SSM分布式案例-互联网商城-阶段项目-必看(共197集）\15 本项目工具软件 汇总源码包\参考资料\参考资料\01.参考资料\mybatis\pagehelper-fix\pagehelper"/>
+			<item value="E:\百度云新1\2017java\30-SSM分布式案例-互联网商城-阶段项目-必看(共197集）\15 本项目工具软件 汇总源码包\参考资料\参考资料\01.参考资料\mybatis\逆向工程\generatorSqlmapCustom"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.m2e.core.wizards.Maven2ProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.m2e"/>
+		</list>
+	</section>
+</section>

@@ -1,0 +1,5 @@
+package com.solr.test;
+
+public class TestSolrCloudAddDocument {
+
+}

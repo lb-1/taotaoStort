@@ -1,0 +1,112 @@
+package com.taotao.search.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocumentList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.taotao.common.pojo.SearchItem;
+import com.taotao.common.pojo.SearchResult;
+import com.taotao.common.util.TaotaoResult;
+import com.taotao.search.mapper.SerachItemMapper;
+
+/**
+ * 从索引库中搜索商品的Dao
+ * @author 李博
+ *
+ */
+@Repository
+public class SearchDao {
+	
+    @Autowired
+    private SolrServer solrServer;
+    @Autowired
+    private SerachItemMapper mapper;
+	 
+	/**
+	 * 根据查询添加查询结果集
+	 * @param query
+	 * @return
+	 * @throws Exception
+	 */
+	public SearchResult search(SolrQuery query)throws Exception{
+		
+		SearchResult searchResult = new SearchResult();
+		
+		//创建 solrServer对象   由spring管理 注入
+		//直接查询
+		QueryResponse response = solrServer.query(query);
+		//获取结果集
+		SolrDocumentList results = response.getResults();
+		//设置SearchResult的总记录数
+		searchResult.setRecordCount(results.getNumFound());
+		
+		List<SearchItem> itemList = new ArrayList<>();
+		
+		//取高亮
+		Map<String, Map<String, List<String>>> highlighting = response.getHighlighting();
+		
+		
+		//遍历结果集
+		for (SolrDocument solrDocument : results) {
+			//将solrDocument中的属性一个个的设置到SerachItem中
+			SearchItem item = new SearchItem();
+			item.setId(Long.parseLong(solrDocument.get("id").toString()));
+			item.setCategory_name((String) solrDocument.get("item_category_name"));
+			item.setImage((String) solrDocument.get("item_image"));
+			item.setPrice((long) solrDocument.get("item_price"));
+			item.setSell_point((String) solrDocument.get("item_sell_point"));
+			
+			//取高亮
+			Map<String, List<String>> map = highlighting.get(solrDocument.get("id"));
+			List<String> list = map.get("item_title");
+			//判断list是否为空
+			String gaolaing = "";
+			if(list!=null&&list.size()>0){
+				//有高亮
+				gaolaing=list.get(0);
+			}else{
+				solrDocument.get("item_title").toString();
+			}
+			item.setTitle(gaolaing);
+			//item.setTitle(solrDocument.get("item_title").toString());
+			
+			//再把SerachItem到list属性中
+			itemList.add(item);
+		}
+		//设置SearchResult属性
+		searchResult.setItemList(itemList);
+		
+		return searchResult;
+	}
+	
+	public TaotaoResult updateItemById(Long id)throws Exception{
+		//查询到商品  
+		SearchItem searchItem = mapper.getSearchItemByid(id);
+		
+		//创建solrInputdocument
+		SolrInputDocument document = new SolrInputDocument();
+		//向文档中添加域
+		document.addField("id", searchItem.getId());
+		document.addField("item_title", searchItem.getTitle());
+		document.addField("item_sell_point", searchItem.getSell_point());
+		document.addField("item_price", searchItem.getPrice());
+		document.addField("item_image", searchItem.getImage());
+		document.addField("item_category_name", searchItem.getCategory_name());
+		document.addField("item_desc", searchItem.getItem_desc());
+		
+		//添加文档到索引库中
+		solrServer.add(document);
+		//提交
+		solrServer.commit();
+		
+		return TaotaoResult.ok();
+	}
+}

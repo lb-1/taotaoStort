@@ -1,0 +1,25 @@
+package com.taotao.search.listener;
+
+import javax.jms.Message;
+import javax.jms.MessageListener;
+
+/**
+ * 接收消息的监听器
+ * @author 李博
+ *
+ */
+public class ItemChangeMessageListener implements MessageListener  {
+	
+	//注入service  直接调用方法更新
+	@Override
+	public void onMessage(Message message) {
+		//判断消息的类型是否为textmessage
+		
+		//如果是  过去商品的id 
+		
+		//通过id 查询商品数据，悬疑片开发mapper 通过商品id查询时的数据
+		
+		//更新索引库
+	}
+
+}

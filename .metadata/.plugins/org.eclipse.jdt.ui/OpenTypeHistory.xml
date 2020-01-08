@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=taotao-manager-interface/src\/main\/java&lt;com.taotao.service{TestService.java[TestService" modifiers="513" timestamp="1564555379300"/>
+<typeInfo handle="=taotao-common/D:\/develop\/Java\/jdk1.8.0_171\/jre\/lib\/rt.jar&lt;java.io(Serializable.class[Serializable" modifiers="1537" timestamp="1525262665288"/>
+<typeInfo handle="=taotao-manager-interface/src\/main\/java&lt;com.taotao.service{ItemService.java[ItemService" modifiers="513" timestamp="1564662072715"/>
+<typeInfo handle="=taotao-manager-interface/src\/main\/java&lt;com.taotao.service{ItemCatService.java[ItemCatService" modifiers="513" timestamp="1564643919037"/>
+<typeInfo handle="=taotao-content-interface/src\/main\/java&lt;com.taotao.content.service{ContentService.java[ContentService" modifiers="513" timestamp="1564986202553"/>
+<typeInfo handle="=taotao-content-service/src\/main\/java&lt;com.taotao.content.service.Jedis{JedisClient.java[JedisClient" modifiers="513" timestamp="1565006514877"/>
+<typeInfo handle="=taotao-search-interface/src\/main\/java&lt;com.taotao.search.service{SearchItemService.java[SearchItemService" modifiers="513" timestamp="1578313828957"/>
+<typeInfo handle="=taotao-search-web/G:\/apache-maven-3.6.1\/repository2\/org\/springframework\/spring-webmvc\/4.2.4.RELEASE\/spring-webmvc-4.2.4.RELEASE.jar&lt;org.springframework.web.servlet(HandlerExceptionResolver.class[HandlerExceptionResolver" modifiers="1537" timestamp="1576589708078"/>
+</typeInfoHistroy>
